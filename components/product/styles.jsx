@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#450920',
-        justifyContent: 'space-around', 
+        justifyContent: 'center', 
         alignItems: 'center',      
         width: '100%',
         textAlign: 'center'      
@@ -13,8 +13,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight:'bold',
         color: '#f9dbbd',
-        textAlign: 'center',
-        margin:30
+        textAlign: 'center'
     },
     box:{
         width: '70%',
@@ -44,29 +43,7 @@ const styles = StyleSheet.create({
         width: '100%',
         textAlign: 'center',
         alignItems: 'center'
-    },
-    boxtext:{
-        color: 'white',
-        
-    },
-    borderproducts:{
-        backgroundColor: '#a53860',
-        borderRadius: 2,
-        height: 150,
-        width: 150,
-        padding:20,
-        alignItems:'center',
-        justifyContent: 'center',
-        margin:20,
-    },
-    fotoProducts:{
-        width:60, 
-        height:50,
-        padding: 20,
-        marginTop:10,
-        marginBottom: 10
-        
-    },
+    }
     
 
 })
