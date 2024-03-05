@@ -1,56 +1,82 @@
-import { createStackNavigator } from "@react-navigation/stack"
-import { NavigationContainer } from "@react-navigation/native"
-import Login from "./components/login"
-import Home from "./components/home"
-import Products from "./components/products"
-import Product from "./components/product"
+import React from 'react';
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+import Login from "./components/login";
+import Home from "./components/home";
+import Products from "./components/products";
+import Product from "./components/product";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Feather } from "@expo/vector-icons"
+import { Feather } from "@expo/vector-icons";
+import Register from './components/register';
 
+const Pilha = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
-const Pilha = createStackNavigator()
-const Tag = createBottomTabNavigator()
-
-function MyTabs(){
-    return(
+function MyTabs() {
+    return (
         <Tab.Navigator
             screenOptions={{
-                tabBarStyle:{
+                tabBarStyle: {
                     backgroundColor: 'white',
-                    paddingBotom:1,
-                    paddingTop:1,
+                    paddingBottom: 1,
+                    paddingTop: 1,
                     borderTopColor: 'transparent',
-                    borderTopLeftRadius:20,
+                    borderTopLeftRadius: 20,
                 },
                 tabBarActiveTintColor: 'white',
-                tabBarInactivateTintColor: '#555'
+                tabBarInactiveTintColor: '#555'
             }}
         >
-            <Tag.Screen
-            name='login'
-            component={login}
-            options={{
-                headerShown:false,
-                tabBarStyle:{display: 'none'},
-                tabBarIcon:({size, color}) =>(
-                    <Feather name="logo" size={size} color={color}></Feather>
-                )
-            }}
-            >
-            </Tag.Screen>
-        </Tab.Navigator>
-    )
+            <Tab.Screen
+                name='Login'
+                component={Login}
+                options={{
+                    headerShown: false,
+                    tabBarIcon: ({ size, color }) => (
+                        <Feather name="user" size={size} color={color} />
+                    )
+                }}
+            />
+            <Tab.Screen
+                name='Home'
+                component={Home}
+                options={{
+                    tabBarIcon: ({ size, color }) => (
+                        <Feather name="home" size={size} color={color} />
+                    )
+                }}
+            />
+            <Tab.Screen
+                name='Products'
+                component={Products}
+                options={{
+                    tabBarIcon: ({ size, color }) => (
+                        <Feather name="shopping-bag" size={size} color={color} />
+                    )
+                }}
+            />
 
+            <Tab.Screen
+                name='Register'
+                component={Register}
+                options={{
+                    tabBarIcon: ({ size, color }) => (
+                        <Feather name="user-plus" size={size} color={color} />
+                    )
+                }}
+            />
+        </Tab.Navigator>
+    );
 }
 
-export default function Routers(){
-    return(
+export default function Routers() {
+    return (
         <NavigationContainer>
             <Pilha.Navigator>
                 <Pilha.Screen
                     name="MyTabs"
                     component={MyTabs}
-                    options={{headerShown: false}}
+                    options={{ headerShown: false }}
                 />
                 <Pilha.Screen
                     name="Login"
@@ -68,7 +94,11 @@ export default function Routers(){
                     name="Product"
                     component={Product}
                 />
+                <Pilha.Screen
+                    name="Register"
+                    component={Register}
+                />
             </Pilha.Navigator>
         </NavigationContainer>
-    )
+    );
 }
